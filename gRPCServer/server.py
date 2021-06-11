@@ -1,8 +1,11 @@
 import os
 import sys
 from concurrent import futures
-
+from dotenv import load_dotenv
 import django
+
+load_dotenv()
+
 
 sys.path.extend(
     [os.getenv('DJANGO_PROJECT_FULL_PATH'), ]
