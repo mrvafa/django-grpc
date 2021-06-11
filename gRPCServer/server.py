@@ -42,13 +42,13 @@ class PostService(post_pb2_grpc.PostServiceServicer):
                 tags=tags,
                 post_status=self.status[post.status],
             ))
-        return responds
+        return post_pb2.PostsRespond(posts=responds)
+
 
     def GetPostByID(self, request, context):
         post_id = request.id
         post = Post.objects.filter(id=post_id).first()
         tags = [tag_pb2.Tag(id=tag.id, title=tag.title, body=tag.body) for tag in post.tags.all()]
-        print(post.status, self.status[post.status])
         respond = post_pb2.Post(
             id=post.id,
             title=post.title,
