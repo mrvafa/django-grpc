@@ -1,0 +1,36 @@
+syntax = "proto3";
+
+import "tag.proto";
+
+
+message Post {
+	uint32 id = 1;
+	string title = 2;
+	string body = 3;
+	PostStatus post_status = 4;
+	repeated Tag tags = 5;
+}
+
+enum PostStatus{
+	NO_STATUS = 0;
+	ACEPTED = 1;
+	REJECTED = 2;
+}
+
+message PostIDRequest{
+	uint32 id = 1;
+}
+
+service PostService{
+	rpc GetPostByID(PostIDRequest) returns (Post) {}
+	rpc Search(SearchText) returns (PostsRespond) {}
+}
+
+message PostsRespond{
+	repeated Post posts = 1;
+}
+
+message SearchText{
+	string search_key = 1;
+}
+
