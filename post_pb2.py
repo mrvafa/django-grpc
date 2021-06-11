@@ -21,7 +21,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n\npost.proto\x1a\ttag.proto\"e\n\x04Post\x12\n\n\x02id\x18\x01 \x01(\r\x12\r\n\x05title\x18\x02 \x01(\t\x12\x0c\n\x04\x62ody\x18\x03 \x01(\t\x12 \n\x0bpost_status\x18\x04 \x01(\x0e\x32\x0b.PostStatus\x12\x12\n\x04tags\x18\x05 \x03(\x0b\x32\x04.Tag\"\x1b\n\rPostIDRequest\x12\n\n\x02id\x18\x01 \x01(\r\"$\n\x0cPostsRespond\x12\x14\n\x05posts\x18\x01 \x03(\x0b\x32\x05.Post\" \n\nSearchText\x12\x12\n\nsearch_key\x18\x01 \x01(\t*6\n\nPostStatus\x12\r\n\tNO_STATUS\x10\x00\x12\x0b\n\x07\x41\x43\x45PTED\x10\x01\x12\x0c\n\x08REJECTED\x10\x02\x32]\n\x0bPostService\x12&\n\x0bGetPostByID\x12\x0e.PostIDRequest\x1a\x05.Post\"\x00\x12&\n\x06Search\x12\x0b.SearchText\x1a\r.PostsRespond\"\x00\x62\x06proto3'
+  serialized_pb=b'\n\npost.proto\x1a\ttag.proto\"e\n\x04Post\x12\n\n\x02id\x18\x01 \x01(\r\x12\r\n\x05title\x18\x02 \x01(\t\x12\x0c\n\x04\x62ody\x18\x03 \x01(\t\x12 \n\x0bpost_status\x18\x04 \x01(\x0e\x32\x0b.PostStatus\x12\x12\n\x04tags\x18\x05 \x03(\x0b\x32\x04.Tag\"\x1b\n\rPostIDRequest\x12\n\n\x02id\x18\x01 \x01(\r\"$\n\x0cPostsRespond\x12\x14\n\x05posts\x18\x01 \x03(\x0b\x32\x05.Post\" \n\nSearchText\x12\x12\n\nsearch_key\x18\x01 \x01(\t*7\n\nPostStatus\x12\r\n\tNO_STATUS\x10\x00\x12\x0c\n\x08\x41\x43\x43\x45PTED\x10\x01\x12\x0c\n\x08REJECTED\x10\x02\x32]\n\x0bPostService\x12&\n\x0bGetPostByID\x12\x0e.PostIDRequest\x1a\x05.Post\"\x00\x12&\n\x06Search\x12\x0b.SearchText\x1a\r.PostsRespond\"\x00\x62\x06proto3'
   ,
   dependencies=[tag__pb2.DESCRIPTOR,])
 
@@ -38,7 +38,7 @@ _POSTSTATUS = _descriptor.EnumDescriptor(
       type=None,
       create_key=_descriptor._internal_create_key),
     _descriptor.EnumValueDescriptor(
-      name='ACEPTED', index=1, number=1,
+      name='ACCEPTED', index=1, number=1,
       serialized_options=None,
       type=None,
       create_key=_descriptor._internal_create_key),
@@ -51,13 +51,13 @@ _POSTSTATUS = _descriptor.EnumDescriptor(
   containing_type=None,
   serialized_options=None,
   serialized_start=229,
-  serialized_end=283,
+  serialized_end=284,
 )
 _sym_db.RegisterEnumDescriptor(_POSTSTATUS)
 
 PostStatus = enum_type_wrapper.EnumTypeWrapper(_POSTSTATUS)
 NO_STATUS = 0
-ACEPTED = 1
+ACCEPTED = 1
 REJECTED = 2
 
 
@@ -264,8 +264,8 @@ _POSTSERVICE = _descriptor.ServiceDescriptor(
   index=0,
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
-  serialized_start=285,
-  serialized_end=378,
+  serialized_start=286,
+  serialized_end=379,
   methods=[
   _descriptor.MethodDescriptor(
     name='GetPostByID',

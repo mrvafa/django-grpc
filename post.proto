@@ -13,7 +13,7 @@ message Post {
 
 enum PostStatus{
 	NO_STATUS = 0;
-	ACEPTED = 1;
+	ACCEPTED = 1;
 	REJECTED = 2;
 }
 
