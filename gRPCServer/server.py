@@ -1,10 +1,11 @@
+import os
 import sys
 from concurrent import futures
 
 import django
 
 sys.path.extend(
-    ['/home/mrvafa/Projects/Python/DjangoGRPC', ]
+    [os.getenv('DJANGO_PROJECT_FULL_PATH'), ]
 )
 if 'setup' in dir(django):
     django.setup()
