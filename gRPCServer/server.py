@@ -21,13 +21,13 @@ from core.models import Post
 class PostService(post_pb2_grpc.PostServiceServicer):
     def __init__(self):
         self.status = {
-            0: 'non_status',
-            1: 'accepted',
-            2: 'rejected',
+            'non_status': post_pb2.PostStatus.NO_STATUS,
+            'accepted': post_pb2.PostStatus.ACCEPTED,
+            'rejected': post_pb2.PostStatus.REJECTED,
         }
 
     def Search(self, request, context):
-        search_key = request.seach_key
+        search_key = request.search_key
         posts = Post.objects.filter(
             Q(title__icontains=search_key),
             Q(body__icontains=search_key),
@@ -40,7 +40,7 @@ class PostService(post_pb2_grpc.PostServiceServicer):
                 title=post.title,
                 body=post.body,
                 tags=tags,
-                status=self.status[post.status],
+                post_status=self.status[post.status],
             ))
         return responds
 
@@ -48,19 +48,20 @@ class PostService(post_pb2_grpc.PostServiceServicer):
         post_id = request.id
         post = Post.objects.filter(id=post_id).first()
         tags = [tag_pb2.Tag(id=tag.id, title=tag.title, body=tag.body) for tag in post.tags.all()]
+        print(post.status, self.status[post.status])
         respond = post_pb2.Post(
             id=post.id,
             title=post.title,
             body=post.body,
-            tasg=tags,
-            status=self.status[post.status],
+            tags=tags,
+            post_status=self.status[post.status],
         )
         return respond
 
 
 def serve():
     server = grpc.server((futures.ThreadPoolExecutor(max_workers=10)))
-    post_pb2_grpc.add_PostServiceServicer_to_server(PostService, server)
+    post_pb2_grpc.add_PostServiceServicer_to_server(PostService(), server)
     server.add_insecure_port('[::]:50051')
     server.start()
     server.wait_for_termination()
