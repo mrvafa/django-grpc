@@ -1,5 +1,5 @@
 # Client/Server gRPC using Django
-
+> For persian guid, visit https://mrvafa.ir/post/learn-grpc-protocol-buffers
 ## Table of content
 
 1. [Installation](#installation)
